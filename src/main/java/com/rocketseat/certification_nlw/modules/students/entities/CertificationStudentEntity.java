@@ -14,25 +14,20 @@ import java.util.UUID;
 @Entity(name = "certifications")
 public class CertificationStudentEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
-    @Column(length = 100)
-    private String technology;
-
-    @Column(length = 10)
-    private int grade;
-
-    @JoinColumn(name = "student_id")
-    private UUID studentID;
-
-    @ManyToOne
-    @JoinColumn(name = "student_id", insertable = false, updatable = false)
-    private StudentEntity studentEntity;
-
     @OneToMany()
     @JoinColumn(name = "answer_certification_id")
     List<AnswersCertificationsEntity> answersCertificationsEntity;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+    @Column(length = 100)
+    private String technology;
+    @Column(length = 10)
+    private int grade;
+    @JoinColumn(name = "student_id")
+    private UUID studentID;
+    @ManyToOne
+    @JoinColumn(name = "student_id", insertable = false, updatable = false)
+    private StudentEntity studentEntity;
 
 }

@@ -1,7 +1,6 @@
 package com.rocketseat.certification_nlw.modules.questions.entities;
 
 import jakarta.persistence.*;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,11 +23,11 @@ public class QuestionEntity {
     @Column(length = 50)
     private String technology;
 
-    @Column()
     private String description;
 
-    @Column()
-    private List<String> alternatives;
+    @OneToMany
+    @JoinColumn(name = "question_id")
+    private List<AlternativesEntity> alternatives;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
